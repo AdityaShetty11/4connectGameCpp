@@ -11,7 +11,18 @@ bool Board::isColumnValid(int column) const {
 }
 
 bool Board::dropPiece(int column, char piece) {
-    return isColumnValid(column) && piece != '.';
+    if (piece == '.' || !isColumnValid(column)) {
+        return false;
+    }
+
+    for (int row = ROWS - 1; row >= 0; row--) {
+        if (grid_[row][column] == '.') {
+            grid_[row][column] = piece;
+            return true;
+        }
+    }
+
+    return false;
 }
 
 std::string Board::toString() const {
