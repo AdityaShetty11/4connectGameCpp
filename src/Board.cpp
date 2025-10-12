@@ -39,6 +39,54 @@ bool Board::dropPiece(int column, char piece) {
     return false;
 }
 
+bool Board::hasWinner() const {
+    for (int row = 0; row < ROWS; row++) {
+        for (int column = 0; column < COLUMNS; column++) {
+            char cell = grid_[row][column];
+
+            if (cell == '.') {
+                continue;
+            }
+
+            if (column + 3 < COLUMNS &&
+                cell == grid_[row][column + 1] &&
+                cell == grid_[row][column + 2] &&
+                cell == grid_[row][column + 3]) {
+                return true;
+            }
+
+            if (row + 3 < ROWS &&
+                cell == grid_[row + 1][column] &&
+                cell == grid_[row + 2][column] &&
+                cell == grid_[row + 3][column]) {
+                return true;
+            }
+
+            if (row + 3 < ROWS &&
+                column + 3 < COLUMNS &&
+                cell == grid_[row + 1][column + 1] &&
+                cell == grid_[row + 2][column + 2] &&
+                cell == grid_[row + 3][column + 3]) {
+                return true;
+            }
+
+            if (row + 3 < ROWS &&
+                column - 3 >= 0 &&
+                cell == grid_[row + 1][column - 1] &&
+                cell == grid_[row + 2][column - 2] &&
+                cell == grid_[row + 3][column - 3]) {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
+char Board::getCell(int row, int column) const {
+    return grid_[row][column];
+}
+
 std::string Board::toString() const {
     std::ostringstream output;
 

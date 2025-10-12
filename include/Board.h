@@ -15,6 +15,8 @@ public:
     bool isColumnFull(int column) const;
     bool isFull() const;
     bool dropPiece(int column, char piece);
+    bool hasWinner() const;
+    char getCell(int row, int column) const;
     std::string toString() const;
 
 private:
