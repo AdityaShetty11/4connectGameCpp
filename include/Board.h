@@ -12,6 +12,8 @@ public:
     Board();
 
     bool isColumnValid(int column) const;
+    bool isColumnFull(int column) const;
+    bool isFull() const;
     bool dropPiece(int column, char piece);
     std::string toString() const;
 

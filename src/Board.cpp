@@ -10,8 +10,22 @@ bool Board::isColumnValid(int column) const {
     return column >= 0 && column < COLUMNS;
 }
 
+bool Board::isColumnFull(int column) const {
+    return !isColumnValid(column) || grid_[0][column] != '.';
+}
+
+bool Board::isFull() const {
+    for (int column = 0; column < COLUMNS; column++) {
+        if (!isColumnFull(column)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 bool Board::dropPiece(int column, char piece) {
-    if (piece == '.' || !isColumnValid(column)) {
+    if (piece == '.' || isColumnFull(column)) {
         return false;
     }
 
