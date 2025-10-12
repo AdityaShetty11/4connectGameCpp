@@ -7,3 +7,7 @@ Player::Player(std::string name, char piece)
 const std::string& Player::getName() const {
     return name_;
 }
+
+char Player::getPiece() const {
+    return piece_;
+}
