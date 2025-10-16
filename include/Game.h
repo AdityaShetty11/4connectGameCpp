@@ -16,9 +16,14 @@ private:
     Player player2_;
     int currentPlayerNumber_;
 
+    const Player& currentPlayer() const;
     void renderBoard() const;
+    void renderTurnPrompt() const;
+    int readMove() const;
     void handleTurn();
     void switchPlayer();
+    bool isGameOver() const;
+    void renderOutcome() const;
 };
 
 #endif
