@@ -16,7 +16,7 @@ const Player& Game::currentPlayer() const {
 }
 
 void Game::run() {
-    while (!board_.isFull()) {
+    while (!isGameOver()) {
         renderBoard();
         handleTurn();
         switchPlayer();
