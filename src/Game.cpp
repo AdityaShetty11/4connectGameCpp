@@ -60,6 +60,12 @@ void Game::handleTurn() {
             continue;
         }
 
+        int column = input - 1;
+        if (!board_.dropPiece(column, currentPlayer().getPiece())) {
+            std::cout << "That column is full. Try another column.\n";
+            continue;
+        }
+
         break;
     }
 }
