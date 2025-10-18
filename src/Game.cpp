@@ -55,7 +55,11 @@ void Game::handleTurn() {
             continue;
         }
 
-        (void)input;
+        if (input < 1 || input > Board::COLUMNS) {
+            std::cout << "Invalid input. Enter a number from 1 to 7.\n";
+            continue;
+        }
+
         break;
     }
 }
