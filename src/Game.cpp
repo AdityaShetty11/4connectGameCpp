@@ -43,6 +43,7 @@ int Game::readMove() const {
 }
 
 void Game::handleTurn() {
+    renderTurnPrompt();
 }
 
 void Game::switchPlayer() {
