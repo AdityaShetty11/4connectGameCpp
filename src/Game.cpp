@@ -19,10 +19,10 @@ void Game::run() {
     while (!isGameOver()) {
         renderBoard();
         handleTurn();
-        switchPlayer();
     }
 
     renderBoard();
+    renderOutcome();
 }
 
 void Game::renderBoard() const {
@@ -64,6 +64,10 @@ void Game::handleTurn() {
         if (!board_.dropPiece(column, currentPlayer().getPiece())) {
             std::cout << "That column is full. Try another column.\n";
             continue;
+        }
+
+        if (!isGameOver()) {
+            switchPlayer();
         }
 
         break;
