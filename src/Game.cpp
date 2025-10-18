@@ -43,6 +43,8 @@ int Game::readMove() const {
 }
 
 void Game::handleTurn() {
+    int input = readMove();
+    (void)input;
     renderTurnPrompt();
 }
 
