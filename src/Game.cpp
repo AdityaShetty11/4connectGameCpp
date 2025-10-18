@@ -1,6 +1,7 @@
 #include "Game.h"
 
 #include <iostream>
+#include <limits>
 
 Game::Game()
     : player1_("Player 1", 'R'), player2_("Player 2", 'Y'), currentPlayerNumber_(1) {
@@ -43,9 +44,20 @@ int Game::readMove() const {
 }
 
 void Game::handleTurn() {
-    int input = readMove();
-    (void)input;
-    renderTurnPrompt();
+    while (true) {
+        renderTurnPrompt();
+        int input = readMove();
+
+        if (!std::cin) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Invalid input. Enter a number from 1 to 7.\n";
+            continue;
+        }
+
+        (void)input;
+        break;
+    }
 }
 
 void Game::switchPlayer() {
